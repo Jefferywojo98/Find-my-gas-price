@@ -2,5 +2,4 @@
 
 Branch Test
 =======
-I enjoy JavaScript because it utilizes both Functional programming and Object-oriented programming.s
-
+![demo] (https://jefferywojo98.github.io/Find-my-gas-price/)
