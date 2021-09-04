@@ -16,11 +16,11 @@ function FindCity(){
         .then(function (locRes){
             var lat = locRes.city.coord.lat
             var lon = locRes.city.coord.lon
-            console.log(lat);
+            console.log(lat, lon);
         })
 }
 
 
 
 
-$('searchButton').on('click', FindCity)
+$('#searchButton').on('click', FindCity)
