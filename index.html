@@ -1,47 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <title>Gas price</title>
     <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-</head>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Tangerine"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css' rel='stylesheet' />
+  </head>
 
-<body>
+  <body>
     <nav class="text-center">
-        <h1>Gas price</h1>
+      <h1>Gas price</h1>
     </nav>
     <main>
-        <div class="container-fluid d-flex justify-content-center">
-            <div class="jumbotron bg-success user-info-section">
-                    <h2 class="welcome-heading text-center">Welcome to gas finder. Please enter your information.</h2>
-                    <div class="row col-6">
-                        <input id="cityName" type="text" class="form-control" placeholder="Enter City" />
-                        <label for="fuels">
-                            <select name="fuels" id="fuelType" class="form-control">
-                                <option disabled selected>Select Fuel Type</option>
-                                <option value="Premium">Premium</option>
-                                <option value="Regular">Regular</option>
-                                <option value="Mid-Grade">Mid-Grade</option>
-                            </select>
-                            <button id="searchButton" class="btn btn-primary btn-wide bg-dark" type="button">
-                                Search
-                                <i class="fa fa-search"></i>
-                            </button>
-
-                        </label>
-                    </div>
-                    
-                </div>
-            </div>
-            <div class="container d-flex justify-content-center">
-                <div class = "jumbotron">
-                  
-                </div>
-
-            </div>
+      <div class="container-fluid d-flex justify-content-center">
+        <div class="jumbotron bg-success user-info-section">
+          <h2 class="welcome-heading text-center">
+            Welcome to gas finder. Please enter your information.
+          </h2>
+          <div class="row col-6">
+            <input
+              id="cityName"
+              type="text"
+              class="form-control"
+              placeholder="Enter City"
+            />
+            <label for="fuels">
+              <select name="fuels" id="fuelType" class="form-control">
+                <option disabled selected>Select Fuel Type</option>
+                <option value="Premium">Premium</option>
+                <option value="Regular">Regular</option>
+                <option value="Mid-Grade">Mid-Grade</option>
+              </select>
+              <button
+                id="searchButton"
+                class="btn btn-primary btn-wide bg-dark"
+                type="button"
+              >
+                Search
+                <i class="fa fa-search"></i>
+              </button>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="container d-flex justify-content-center">
+        <div class="jumbotron">
+            <div id='map' style='width: 800px; height: 400px;'></div>
+        </div>
+      </div>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./script.js"></script>
