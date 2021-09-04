@@ -3,7 +3,7 @@ function FindCity(){
     var City = $('#cityName').val()
 
     var Coord = 'https://api.openweathermap.org/data/2.5/forecast?q=' + City + '&appid=b16f1aea6c8a8adc1ebc2fd17697b89a';
-    console.log(Coord)
+
     fetch(Coord)
         .then(function(response){
             if(!response.ok){
