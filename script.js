@@ -23,4 +23,4 @@ function FindCity(){
 
 
 
-$('searchButton').on('click', FindCity)
+$('#searchButton').on('click', FindCity)
