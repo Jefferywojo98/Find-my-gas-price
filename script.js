@@ -38,4 +38,4 @@ function FindStation(){
     }
             
 
-$('#searchButton').on('click', FindCity)
+$('#searchButton').on('click', FindStation)
