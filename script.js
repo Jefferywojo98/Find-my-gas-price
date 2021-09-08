@@ -7,8 +7,12 @@ const map = new mapboxgl.Map({
   zoom: 9, // starting zoom
 });
 
-function FindStation(lat, lon){
-    var Coord = 'https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=HknVf14CYKrMly49l59op0xR6ZmLU87fawrITIkg&latitude=' + lat + '&longitude=' + lon + '&radius=500.0';
+function FindStation(){
+    var State = $('#State').val()
+    var fuel_type = 'BD'
+
+
+    var Coord = 'https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=HknVf14CYKrMly49l59op0xR6ZmLU87fawrITIkg&state=' + State + '&fuel_type=' + fuel_type;
 
     fetch(Coord)
         .then(function(response){
@@ -26,44 +30,13 @@ function FindStation(lat, lon){
 
             $('.list').append('<ul>').addClass('Stations')
 
-            // for(i = 0; i < Stations.length; i++){
-            //     // console.log(Stations[i])
-            //     $('<li>').addClass('Closer')
-            //     $('.Stations').append('.Closer').html(Stations[i].distance)
-            // }
+            for(i = 0; i < Stations.length; i++){
+ 
+                $('<li>').appendTo('.Stations').addClass('Closer').html(locRes.fuel_stations[i].station_name)
+                
+            }
             
         })
 }
 
-function FindCity(){
-    var City = $('#cityName').val()
-
-    var Coord = 'https://api.openweathermap.org/data/2.5/forecast?q=' + City + '&appid=b16f1aea6c8a8adc1ebc2fd17697b89a';
-
-    fetch(Coord)
-        .then(function(response){
-            if(!response.ok){
-                throw response.json()
-            }
-            else{
-                return response.json()
-            }
-        })
-        .then(function (locRes){
-            var lat = locRes.city.coord.lat
-            var lon = locRes.city.coord.lon
-            
-            FindStation()
-        });
-}
-
-
-
-
-$('#searchButton').on('click', FindCity)
-
-            console.log(lat, lon);
-        });
-}
-
-$('#searchButton').on('click', FindCity)
+$('#searchButton').on('click', FindStation)
