@@ -10,8 +10,8 @@ const map = new mapboxgl.Map({
 var currentMarkers = [];
 
 function FindStation(){
-        var State = $('#State').val()
-    var fuel_type = $('#fuelType').val()
+    var State = $('#State').val();
+    var fuel_type = $('#fuelType').val();
 
 
     var Coord = 'https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=HknVf14CYKrMly49l59op0xR6ZmLU87fawrITIkg&state=' + State + '&fuel_type=' + fuel_type;
@@ -19,50 +19,51 @@ function FindStation(){
     fetch(Coord)
         .then(function(response){
             if(!response.ok){
-                throw response.json()
+                throw response.json();
             }
             else{
-                return response.json()
+                return response.json();
             }
         })
         .then(function (locRes){
-            
+
             $('.Stations').children('li').remove();
             $('.list').children('ul').remove();
 
-            var Stations = locRes.fuel_stations
+            var Stations = locRes.fuel_stations;
+            var lon = 0;
+            var lat = 0;
 
 
-            $('.list').append('<ul>').addClass('Stations')
+            $('.list').append('<ul>').addClass('Stations');
+            
+            for(i = 0; i < locRes.fuel_stations.length; i++){
+                lon = lon + locRes.fuel_stations[i].longitude;
+                lat = lat + locRes.fuel_stations[i].latitude;
+            };
 
-            var lon = locRes.fuel_stations[0].longitude;
-            var lat = locRes.fuel_stations[0].latitude;
+            lon = lon / locRes.fuel_stations.length;
+            lat = lat / locRes.fuel_stations.length;
 
-            // map.jumpTo({lng: lon, lat: lat});
-            map.flyTo({
-                center: [
-                lon,
-                lat
-                ],
+            map.flyTo({center: [lon, lat],});
 
-            })
             if (currentMarkers!==null) {
                 for (var i = currentMarkers.length - 1; i >= 0; i--) {
                   currentMarkers[i].remove();
-                }
-            }
+                };
+            };
 
             for(i = 0; i < Stations.length; i++){
  
-                 $('<li>').appendTo('.Stations').addClass('Closer ' + locRes.fuel_stations[i].fuel_type_code).html('City: ' + locRes.fuel_stations[i].city + ' Station Name: ' + locRes.fuel_stations[i].station_name)
+                 $('<li>').appendTo('.Stations').addClass('Closer ' + locRes.fuel_stations[i].fuel_type_code).html('City: ' + locRes.fuel_stations[i].city + ' Station Name: ' + locRes.fuel_stations[i].station_name);
                  // Create a default Marker and add it to the map.
                  const marker = new mapboxgl.Marker()
                 .setLngLat([locRes.fuel_stations[i].longitude, locRes.fuel_stations[i].latitude])
                 .addTo(map);
                 currentMarkers.push(marker);
             }
-        })
-    }
+        });
+    };
             
 
-$('#searchButton').on('click', FindStation)
+$('#searchButton').on('click', FindStation);
