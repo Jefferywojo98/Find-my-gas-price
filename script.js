@@ -62,3 +62,8 @@ function FindCity(){
 
 $('#searchButton').on('click', FindCity)
 
+            console.log(lat, lon);
+        });
+}
+
+$('#searchButton').on('click', FindCity)
