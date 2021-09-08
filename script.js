@@ -35,7 +35,7 @@ function FindStation(){
 
             for(i = 0; i < Stations.length; i++){
  
-                $('<li>').appendTo('.Stations').addClass('Closer').html(locRes.fuel_stations[i].station_name)
+                 $('<li>').appendTo('.Stations').addClass('Closer ' + locRes.fuel_stations[i].fuel_type_code).html('City: ' + locRes.fuel_stations[i].city + ' Station Name: ' + locRes.fuel_stations[i].station_name)
             }
         })
     }
