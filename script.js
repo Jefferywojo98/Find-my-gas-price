@@ -8,8 +8,8 @@ const map = new mapboxgl.Map({
 });
 
 function FindStation(){
-    var State = $('#State').val()
-    var fuel_type = 'BD'
+        var State = $('#State').val()
+    var fuel_type = $('#fuelType').val()
 
 
     var Coord = 'https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=HknVf14CYKrMly49l59op0xR6ZmLU87fawrITIkg&state=' + State + '&fuel_type=' + fuel_type;
@@ -26,6 +26,9 @@ function FindStation(){
         .then(function (locRes){
             console.log(locRes)
             
+            $('.Stations').children('li').remove();
+            $('.list').children('ul').remove();
+
             var Stations = locRes.fuel_stations
 
             $('.list').append('<ul>').addClass('Stations')
