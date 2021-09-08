@@ -4,8 +4,10 @@ const map = new mapboxgl.Map({
   container: "map", // container ID
   style: "mapbox://styles/mapbox/streets-v11", // style URL
   center: [-74.5, 40], // starting position [lng, lat]
-  zoom: 9, // starting zoom
+  zoom: 5, // starting zoom
 });
+
+var currentMarkers = [];
 
 function FindStation(){
         var State = $('#State').val()
@@ -24,18 +26,40 @@ function FindStation(){
             }
         })
         .then(function (locRes){
-            console.log(locRes)
             
             $('.Stations').children('li').remove();
             $('.list').children('ul').remove();
 
             var Stations = locRes.fuel_stations
 
+
             $('.list').append('<ul>').addClass('Stations')
+
+            var lon = locRes.fuel_stations[0].longitude;
+            var lat = locRes.fuel_stations[0].latitude;
+
+            // map.jumpTo({lng: lon, lat: lat});
+            map.flyTo({
+                center: [
+                lon,
+                lat
+                ],
+
+            })
+            if (currentMarkers!==null) {
+                for (var i = currentMarkers.length - 1; i >= 0; i--) {
+                  currentMarkers[i].remove();
+                }
+            }
 
             for(i = 0; i < Stations.length; i++){
  
                  $('<li>').appendTo('.Stations').addClass('Closer ' + locRes.fuel_stations[i].fuel_type_code).html('City: ' + locRes.fuel_stations[i].city + ' Station Name: ' + locRes.fuel_stations[i].station_name)
+                 // Create a default Marker and add it to the map.
+                 const marker = new mapboxgl.Marker()
+                .setLngLat([locRes.fuel_stations[i].longitude, locRes.fuel_stations[i].latitude])
+                .addTo(map);
+                currentMarkers.push(marker);
             }
         })
     }
