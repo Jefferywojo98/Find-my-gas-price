@@ -59,6 +59,10 @@ function FindStation(){
                  // Create a default Marker and add it to the map.
                  const marker = new mapboxgl.Marker()
                 .setLngLat([locRes.fuel_stations[i].longitude, locRes.fuel_stations[i].latitude])
+                .setPopup(
+                    new mapboxgl.Popup({ offset: 25 })
+                    .setHTML(`<h3>City: ${locRes.fuel_stations[i].city}</h3><h5>Station: ${locRes.fuel_stations[i].station_name}</h5><p>Address: ${locRes.fuel_stations[i].street_address}</p>`)
+                )
                 .addTo(map);
                 currentMarkers.push(marker);
             }
