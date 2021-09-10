@@ -7,7 +7,7 @@ body nav h1{
     justify-content: center;
 }
 
-.Closer{
+.list-group-items{
     display: flex;
     justify-content: center;
 }
