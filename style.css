@@ -1,13 +1,25 @@
+
 body nav h1{
-    font-family: 'Tangerine';
+    font-family: 'Alfa Slab one';
 }
 
-.Waiting{
-    display: flex;
-    justify-content: center;
+li{
+    list-style: none;
 }
 
 .list-group-items{
     display: flex;
     justify-content: center;
+
+ul{
+    list-style: none;
 }
+  
+h2{
+    font-family: 'Alfa Slab one';
+    font-size: 50px;
+   
+.Waiting{
+        display: flex;
+        justify-content: center;
+    }
