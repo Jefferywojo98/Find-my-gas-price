@@ -52,9 +52,10 @@ function FindStation(){
                   currentMarkers[i].remove();
                 };
             };
+            
+            $('.Loading').append('<h3>').addClass('Waiting').html('One Moment Please...');
 
             for(i = 0; i < Stations.length; i++){
- 
                  $('<li>').appendTo('.Stations').addClass('Closer ' + locRes.fuel_stations[i].fuel_type_code).html('City: ' + locRes.fuel_stations[i].city + ' Station Name: ' + locRes.fuel_stations[i].station_name);
                  // Create a default Marker and add it to the map.
                  const marker = new mapboxgl.Marker()
@@ -65,7 +66,12 @@ function FindStation(){
                 )
                 .addTo(map);
                 currentMarkers.push(marker);
+                
+                if(i == (Stations.length - 1)){
+                    $('.Waiting').html('')
+                }
             }
+
         });
     };
             
