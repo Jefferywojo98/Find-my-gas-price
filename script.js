@@ -57,7 +57,7 @@ function FindStation(){
                 $('.list').append('<ul>').addClass('Stations');
 
                 for(i = 0; i < Stations.length; i++){
-                    $('<li>').appendTo('.Stations').addClass('list-group-items list-group-item-action ' + locRes.fuel_stations[i].fuel_type_code).html('City: ' + locRes.fuel_stations[i].city + ' Station Name: ' + locRes.fuel_stations[i].station_name);
+                    $('<li>').appendTo('.Stations').addClass('list-group-item list-group-item-action ' + locRes.fuel_stations[i].fuel_type_code).html('City: ' + locRes.fuel_stations[i].city + ' Station Name: ' + locRes.fuel_stations[i].station_name);
                     // Create a default Marker and add it to the map.
                     const marker = new mapboxgl.Marker()
                     .setLngLat([locRes.fuel_stations[i].longitude, locRes.fuel_stations[i].latitude])
