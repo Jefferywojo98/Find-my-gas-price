@@ -14,8 +14,7 @@ function FindStation(){
     var fuel_type = $('#fuelType').val();
 
 
-    var Coord = 'https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=HknVf14CYKrMly49l59op0xR6ZmLU87fawrITIkg&state=' + State + '&fuel_type=' + fuel_type;
-
+    var Coord = 'https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=HknVf14CYKrMly49l59op0xR6ZmLU87fawrITIkg&limit=20&state=' + State + '&fuel_type=' + fuel_type;
     fetch(Coord)
         .then(function(response){
             if(!response.ok){
@@ -74,7 +73,7 @@ function FindStation(){
                     }
                 }
             }else{
-                $('.Waiting').html('Results Not Found')
+                $('.Waiting').html('Results Not Found, Try New Search')
             }
 
             
