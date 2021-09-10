@@ -2,13 +2,19 @@
 body nav h1{
     font-family: 'Alfa Slab one';
 }
+
 li{
     list-style: none;
 }
 
+.list-group-items{
+    display: flex;
+    justify-content: center;
+
 ul{
     list-style: none;
 }
+  
 h2{
     font-family: 'Alfa Slab one';
     font-size: 50px;
@@ -17,9 +23,3 @@ h2{
         display: flex;
         justify-content: center;
     }
-    
-.Closer{
-        display: flex;
-        justify-content: center;
-    }
-}
