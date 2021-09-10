@@ -10,6 +10,7 @@ li{
 .list-group-items{
     display: flex;
     justify-content: center;
+}
 
 ul{
     list-style: none;
@@ -18,8 +19,9 @@ ul{
 h2{
     font-family: 'Alfa Slab one';
     font-size: 50px;
-   
+}
+    
 .Waiting{
         display: flex;
         justify-content: center;
-    }
+}
