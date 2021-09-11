@@ -7,12 +7,13 @@ const map = new mapboxgl.Map({
   zoom: 5, // starting zoom
 });
 
+var color = 0
+
 var currentMarkers = [];
 
 function FindStation(){
     var State = $('#State').val();
     var fuel_type = $('#fuelType').val();
-
 
     var Coord = 'https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=HknVf14CYKrMly49l59op0xR6ZmLU87fawrITIkg&limit=20&state=' + State + '&fuel_type=' + fuel_type;
     fetch(Coord)
@@ -57,8 +58,10 @@ function FindStation(){
                 $('.list').append('<ul>').addClass('Stations');
 
                 for(i = 0; i < Stations.length; i++){
-                    $('<li>').appendTo('.Stations').addClass('list-group-item list-group-item-action City-Address').html('City: ' + locRes.fuel_stations[i].city + '; Address: ' + locRes.fuel_stations[i].street_address);
-                    $('<li>').appendTo('.Stations').addClass('list-group-item list-group-item-action Station-Name').html('Station Name: ' + locRes.fuel_stations[i].station_name);
+
+                    $('<li>').appendTo('.Stations').addClass('list-group-item list-group-item-action' + locRes.fuel_stations[i].fuel_type_code).html('City: ' + locRes.fuel_stations[i].city + '; Address: ' + locRes.fuel_stations[i].street_address);
+                    $('<li>').appendTo('.Stations').addClass('list-group-item list-group-item-action' + locRes.fuel_stations[i].fuel_type_code).html('Station Name: ' + locRes.fuel_stations[i].station_name)
+
                     // Create a default Marker and add it to the map.
                     const marker = new mapboxgl.Marker()
                     .setLngLat([locRes.fuel_stations[i].longitude, locRes.fuel_stations[i].latitude])
@@ -74,7 +77,7 @@ function FindStation(){
                     }
                 }
             }else{
-                $('.Waiting').html('Results Not Found, Try New Search')
+                $('.Waiting').html('Results Not Found')
             }
 
             
@@ -82,6 +85,22 @@ function FindStation(){
         });
 
     };
-            
+        
+function darkMode(){
+    if(color === 0){
+        color = 1;
+        $('.coded').addClass('dark-mode');
+        $('.Title').addClass('light-text');
+        $('.modeChange').addClass('dark-mode light-text').html('Light Mode');
+    }else{
+        color = 0;
+        $('.coded').removeClass('dark-mode');
+        $('.Title').removeClass('light-text');
+        $('.modeChange').removeClass('dark-mode light-text').html('Dark Mode');
+    };
+};
 
 $('#searchButton').on('click', FindStation);
+$('.modeChange').on('click', darkMode)
+
+

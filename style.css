@@ -1,3 +1,16 @@
+.dark-mode{
+    background-color: rgb(49, 49, 49);
+}
+
+.light-text{
+    color: whitesmoke;
+}
+
+nav,
+main{
+    margin: 0;
+    padding: 0;
+}
 
 body nav h1{
     font-family: 'Alfa Slab one';
@@ -7,20 +20,33 @@ li{
     list-style: none;
 }
 
-.list-group-item{
+.list-group-items{
     display: flex;
     justify-content: center;
 }
+
 ul{
     list-style: none;
 }
-  
+
 h2{
     font-family: 'Alfa Slab one';
     font-size: 50px;
-    }
-   
+}
+
+.Mode{
+    right: 150px;
+    top: 15px;
+    position: absolute;
+}
+
+h1{
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
 .Waiting{
         display: flex;
         justify-content: center;
-    }
+}
