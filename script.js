@@ -15,9 +15,7 @@ function FindStation(){
     var State = $('#State').val();
     var fuel_type = $('#fuelType').val();
 
-
     var Coord = 'https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=HknVf14CYKrMly49l59op0xR6ZmLU87fawrITIkg&limit=20&state=' + State + '&fuel_type=' + fuel_type;
-
     fetch(Coord)
         .then(function(response){
             if(!response.ok){
@@ -60,8 +58,10 @@ function FindStation(){
                 $('.list').append('<ul>').addClass('Stations');
 
                 for(i = 0; i < Stations.length; i++){
+
                     $('<li>').appendTo('.Stations').addClass('list-group-item list-group-item-action' + locRes.fuel_stations[i].fuel_type_code).html('City: ' + locRes.fuel_stations[i].city + '; Address: ' + locRes.fuel_stations[i].street_address);
                     $('<li>').appendTo('.Stations').addClass('list-group-item list-group-item-action' + locRes.fuel_stations[i].fuel_type_code).html('Station Name: ' + locRes.fuel_stations[i].station_name)
+
                     // Create a default Marker and add it to the map.
                     const marker = new mapboxgl.Marker()
                     .setLngLat([locRes.fuel_stations[i].longitude, locRes.fuel_stations[i].latitude])
@@ -102,3 +102,5 @@ function darkMode(){
 
 $('#searchButton').on('click', FindStation);
 $('.modeChange').on('click', darkMode)
+
+
