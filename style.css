@@ -1,30 +1,71 @@
+.dark-mode{
+    background-color: rgb(49, 49, 49);
+}
+
+.light-text{
+    color: whitesmoke;
+}
+
+.gray-mode{
+    background-color: black;
+}
+
+nav,
+main{
+    margin: 0;
+    padding: 0;
+}
 
 body nav h1{
     font-family: 'Alfa Slab one';
 }
+
 li{
     list-style: none;
-    font-weight: bold;
     font-size:large;
+}
+
+.list-group-items{
+    display: flex;
+    justify-content: center;
 }
 
 ul{
     list-style: none;
 }
+
 h2{
     font-family: 'Alfa Slab one';
     font-size: 50px;
-   
+}
+
+.Mode{
+    right: 150px;
+    top: 15px;
+    position: absolute;
+}
+
+h1{
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
 .Waiting{
         display: flex;
         justify-content: center;
         color: white;
-    }
+        font-size: 50px;
+        font-weight: bold;
+ }
     
 .list-group-item{
         display: flex;
         justify-content: center;
-    }
-.button:click{
-    background-color: none;
- 
+}
+.city{
+    font-style: italic;
+}
+.station{
+ font-weight: bold;
+}
