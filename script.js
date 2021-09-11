@@ -7,6 +7,8 @@ const map = new mapboxgl.Map({
   zoom: 5, // starting zoom
 });
 
+var color = 0
+
 var currentMarkers = [];
 
 function FindStation(){
@@ -15,6 +17,7 @@ function FindStation(){
 
 
     var Coord = 'https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=HknVf14CYKrMly49l59op0xR6ZmLU87fawrITIkg&limit=20&state=' + State + '&fuel_type=' + fuel_type;
+
     fetch(Coord)
         .then(function(response){
             if(!response.ok){
@@ -57,9 +60,10 @@ function FindStation(){
                 $('.list').append('<ul>').addClass('Stations');
 
                 for(i = 0; i < Stations.length; i++){
-                    $('<li>').appendTo('.Stations').addClass('list-group-item list-group-item-action City-Address').html('City: ' + locRes.fuel_stations[i].city + '; Address: ' + locRes.fuel_stations[i].street_address);
-                    $('<li>').appendTo('.Stations').addClass('list-group-item list-group-item-action Station-Name').html('Station Name: ' + locRes.fuel_stations[i].station_name);
-                    // Create a default Marker and add it to the map.
+                  
+                  $('<li>').appendTo('.Stations').addClass('list-group-item list-group-item-action station').html('Station Name: ' + locRes.fuel_stations[i].station_name)  
+                  $('<li>').appendTo('.Stations').addClass('list-group-item list-group-item-action city').html('City: ' + locRes.fuel_stations[i].city + '; Address: ' + locRes.fuel_stations[i].street_address);
+                 // Create a default Marker and add it to the map.
                     const marker = new mapboxgl.Marker()
                     .setLngLat([locRes.fuel_stations[i].longitude, locRes.fuel_stations[i].latitude])
                     .setPopup(
@@ -74,7 +78,7 @@ function FindStation(){
                     }
                 }
             }else{
-                $('.Waiting').html('Results Not Found, Try New Search')
+                $('.Waiting').html('Results Not Found')
             }
 
             
@@ -82,6 +86,22 @@ function FindStation(){
         });
 
     };
-            
+        
+function darkMode(){
+    if(color === 0){
+        color = 1;
+        $('.coded').removeClass('bg-success').addClass('dark-mode');
+        $('.Title').addClass('light-text');
+        $('.settle').removeClass('bg-white').addClass('gray-mode')
+        $('.modeChange').addClass('dark-mode light-text').html('Light Mode');
+    }else{
+        color = 0;
+        $('.coded').removeClass('dark-mode').addClass('bg-success');
+        $('.Title').removeClass('light-text');
+        $('.settle').removeClass('gray-mode').addClass('bg-white')
+        $('.modeChange').removeClass('dark-mode light-text').html('Dark Mode');
+    };
+};
 
 $('#searchButton').on('click', FindStation);
+$('.modeChange').on('click', darkMode)
