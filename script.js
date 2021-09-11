@@ -58,7 +58,7 @@ function FindStation(){
                 $('.list').append('<ul>').addClass('Stations');
 
                 for(i = 0; i < Stations.length; i++){
-                    
+
                   $('<li>').appendTo('.Stations').addClass('list-group-item list-group-item-action Station-Name').html('Station Name: ' + locRes.fuel_stations[i].station_name);
                   $('<li>').appendTo('.Stations').addClass('list-group-item list-group-item-action City-Address').html('City: ' + locRes.fuel_stations[i].city + '; Address: ' + locRes.fuel_stations[i].street_address);
 
