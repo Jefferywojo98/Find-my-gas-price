@@ -18,6 +18,8 @@ body nav h1{
 
 li{
     list-style: none;
+    font-weight: bold;
+    font-size:large;
 }
 
 .list-group-items{
@@ -49,4 +51,11 @@ h1{
 .Waiting{
         display: flex;
         justify-content: center;
+        color: white;
+ }
+    
+.list-group-item{
+        display: flex;
+        justify-content: center;
 }
+
