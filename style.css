@@ -6,6 +6,10 @@
     color: whitesmoke;
 }
 
+.gray-mode{
+    background-color: black;
+}
+
 nav,
 main{
     margin: 0;

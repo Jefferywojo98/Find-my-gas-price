@@ -61,8 +61,8 @@ function FindStation(){
 
                 for(i = 0; i < Stations.length; i++){
                   
-                  $('<li>').appendTo('.Stations').addClass('list-group-item list-group-item-action' + locRes.fuel_stations[i].fuel_type_code).html('Station Name: ' + locRes.fuel_stations[i].station_name)  
-                  $('<li>').appendTo('.Stations').addClass('list-group-item list-group-item-action' + locRes.fuel_stations[i].fuel_type_code).html('City: ' + locRes.fuel_stations[i].city + '; Address: ' + locRes.fuel_stations[i].street_address);
+                  $('<li>').appendTo('.Stations').addClass('list-group-item list-group-item-action station').html('Station Name: ' + locRes.fuel_stations[i].station_name)  
+                  $('<li>').appendTo('.Stations').addClass('list-group-item list-group-item-action city').html('City: ' + locRes.fuel_stations[i].city + '; Address: ' + locRes.fuel_stations[i].street_address);
                  // Create a default Marker and add it to the map.
                     const marker = new mapboxgl.Marker()
                     .setLngLat([locRes.fuel_stations[i].longitude, locRes.fuel_stations[i].latitude])
@@ -90,13 +90,15 @@ function FindStation(){
 function darkMode(){
     if(color === 0){
         color = 1;
-        $('.coded').addClass('dark-mode');
+        $('.coded').removeClass('bg-success').addClass('dark-mode');
         $('.Title').addClass('light-text');
+        $('.settle').removeClass('bg-white').addClass('gray-mode')
         $('.modeChange').addClass('dark-mode light-text').html('Light Mode');
     }else{
         color = 0;
-        $('.coded').removeClass('dark-mode');
+        $('.coded').removeClass('dark-mode').addClass('bg-success');
         $('.Title').removeClass('light-text');
+        $('.settle').removeClass('gray-mode').addClass('bg-white')
         $('.modeChange').removeClass('dark-mode light-text').html('Dark Mode');
     };
 };
