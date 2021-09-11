@@ -22,9 +22,10 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css' rel='stylesheet' />
   </head>
 
-  <body>
-    <nav class="text-center">
-      <h1>Gas price</h1>
+  <body class="coded">
+    <nav>
+      <h1 class="text-center Title">Gas price</h1>
+      <button class="Mode modeChange"> Dark Mode </button>
     </nav>
     <main>
       <div class="container-fluid d-flex justify-content-center">
@@ -89,7 +90,7 @@
                     </select>
             <label for="fuels">
               <select name="fuels" id="fuelType" class="form-control">
-                <option disabled selected >Select Fuel Type</option>
+                <option value="all" >Select Fuel Type</option>
                 <option value="BD">Biodiesel (B20 and Above)</option>
                 <option value="CNG">Compressed Natural Gas (CNG)</option>
                 <option value="ELEC">Electric</option>
@@ -110,7 +111,8 @@
           </div>
         </div>
       </div>
-      <div class="list jumbotron"></div>
+      <div class="Loading"></div>
+      <div class="list"></div>
       <div class="container d-flex justify-content-center">
         <div class="jumbotron">
             <div id='map' style='width: 800px; height: 400px;'></div>
