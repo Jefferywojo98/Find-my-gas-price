@@ -63,9 +63,11 @@ h1{
         display: flex;
         justify-content: center;
 }
+
 .city{
     font-style: italic;
 }
+
 .station{
  font-weight: bold;
 }

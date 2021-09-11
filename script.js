@@ -105,3 +105,4 @@ function darkMode(){
 
 $('#searchButton').on('click', FindStation);
 $('.modeChange').on('click', darkMode)
+
